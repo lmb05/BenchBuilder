@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
+import ExportButtons from "./components/ExportButtons";
 
 const defaultInputs = {
   currentHeadcount: 200,
@@ -118,6 +119,7 @@ export default function App() {
   return (
     <div style={{
       minHeight: "100vh",
+      width: "100%",
       background: "linear-gradient(135deg, #020617 0%, #0f172a 50%, #0c1a2e 100%)",
       fontFamily: "'DM Sans', sans-serif",
       color: "#f1f5f9",
@@ -186,8 +188,8 @@ export default function App() {
         </div>
 
         {/* Right Panel — Outputs */}
-        <div style={{ padding: "1.5rem", overflowY: "auto" }}>
-
+        <div id="results-panel" style={{ padding: "1.5rem", overflowY: "auto" }}>
+        <ExportButtons inputs={inputs} projection={projection} />
           {/* KPI Strip */}
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "1rem", marginBottom: "1.5rem" }}>
             {[
